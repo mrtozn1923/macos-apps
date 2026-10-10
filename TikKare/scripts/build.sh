@@ -4,7 +4,7 @@ set -euo pipefail
 
 ROOT="${0:A:h:h}"
 APP="$ROOT/build/TikKare.app"
-IDENTITY="${KESIT_SIGN_IDENTITY:-Apple Development}"
+IDENTITY="${TIKKARE_SIGN_IDENTITY:-Apple Development}"
 
 # Fall back to ad-hoc signing when no matching certificate is installed (e.g. building from a fresh clone).
 # Note: with ad-hoc signing macOS asks for Screen Recording permission again after every rebuild.
