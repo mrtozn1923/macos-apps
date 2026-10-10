@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>macOS Apps social preview</title>
+<!-- Source for ../social-preview.png (GitHub social preview, 1280×640). Render with headless Chrome. -->
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1280px; height: 640px; overflow: hidden;
+    font-family: -apple-system, "SF Pro Display", "Helvetica Neue", sans-serif;
+    color: #f5f6fa; -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(800px 520px at 88% 10%, rgba(124, 92, 255, .38), transparent 60%),
+      radial-gradient(640px 460px at 5% 100%, rgba(255, 77, 79, .25), transparent 60%),
+      linear-gradient(160deg, #0b1020, #1a1240);
+    padding: 64px 72px; display: flex; flex-direction: column;
+  }
+  .top { display: flex; align-items: center; gap: 18px; }
+  .logo { width: 64px; height: 64px; }
+  h1 { font-size: 60px; font-weight: 800; letter-spacing: -.03em; }
+  .lead { margin-top: 18px; font-size: 30px; font-weight: 650; letter-spacing: -.01em; color: #dfe2f3; }
+  .lead em { font-style: normal; background: linear-gradient(90deg, #ff7a6b, #b18cff); -webkit-background-clip: text; color: transparent; }
+  .apps { margin-top: 44px; display: flex; gap: 20px; }
+  .app {
+    display: flex; align-items: center; gap: 18px; padding: 20px 24px; border-radius: 18px;
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); width: 520px;
+  }
+  .app .icon {
+    width: 64px; height: 64px; border-radius: 15px; flex: none; display: grid; place-items: center;
+    background: linear-gradient(145deg, #ff6a5c, #c2185b 55%, #7c5cff);
+    box-shadow: 0 10px 26px rgba(255, 77, 79, .35), inset 0 1px 0 rgba(255,255,255,.35);
+  }
+  .app h2 { font-size: 28px; letter-spacing: -.01em; }
+  .app p { color: #b9bed6; font-size: 18px; margin-top: 2px; }
+  .soon { width: 300px; justify-content: center; border-style: dashed; color: #a3a9c2; font-size: 19px; text-align: center; }
+  .bottom { margin-top: auto; display: flex; justify-content: space-between; align-items: center; color: #a3a9c2; font-size: 20px; font-weight: 500; }
+  .bottom b { color: #f5f6fa; font-weight: 600; }
+  .chips { display: flex; gap: 10px; }
+  .chip { font-size: 16px; font-weight: 600; padding: 7px 14px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); color: #d9dcf0; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <svg class="logo" viewBox="0 0 32 32"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6a5c"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs><rect width="32" height="32" rx="8" fill="url(#g)"/><g fill="#fff"><rect x="7" y="7" width="8" height="8" rx="2"/><rect x="17" y="7" width="8" height="8" rx="2"/><rect x="7" y="17" width="8" height="8" rx="2"/><rect x="17" y="17" width="8" height="8" rx="2" opacity=".5"/></g></svg>
+    <h1>macOS Apps</h1>
+  </div>
+  <p class="lead">Small, native Mac apps — <em>fully local, free &amp; open source.</em></p>
+
+  <div class="apps">
+    <div class="app">
+      <div class="icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12"/></svg></div>
+      <div><h2>TıkKare</h2><p>Screenshots, annotation &amp; OCR</p></div>
+    </div>
+    <div class="app soon">＋ More coming soon</div>
+  </div>
+
+  <div class="bottom">
+    <div class="chips"><span class="chip">Swift</span><span class="chip">Apple silicon</span><span class="chip">MIT</span></div>
+    <span>github.com/<b>mrtozn1923/macos-apps</b></span>
+  </div>
+</body>
+</html>
