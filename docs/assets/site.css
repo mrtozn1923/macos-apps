@@ -38,10 +38,12 @@ code, kbd {
   font-size: .9em;
 }
 kbd {
-  display: inline-block; min-width: 1.6em; text-align: center;
-  padding: 1px 7px; border-radius: 6px;
-  background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.16);
-  border-bottom-width: 2px;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 26px; height: 26px; padding: 0 7px; border-radius: 7px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; font-size: 13px; font-weight: 600; line-height: 1;
+  color: #e9eaf3; background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.07));
+  border: 1px solid rgba(255,255,255,.16); border-bottom-color: rgba(0,0,0,.35);
+  box-shadow: 0 1px 0 rgba(0,0,0,.25);
 }
 
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
@@ -93,7 +95,7 @@ kbd {
 .btn-ghost { background: var(--surface); border-color: var(--surface-border); color: var(--text); }
 .btn small { font-weight: 500; opacity: .8; font-size: 13px; }
 
-section { padding: 56px 0; }
+section { padding: 44px 0; }
 h1 { font-size: clamp(40px, 6vw, 64px); line-height: 1.05; letter-spacing: -.03em; font-weight: 800; }
 h2 { font-size: clamp(26px, 3.4vw, 34px); letter-spacing: -.02em; font-weight: 750; margin-bottom: 22px; }
 .lead { font-size: clamp(18px, 2.2vw, 22px); color: #d4d7ea; }
@@ -129,10 +131,31 @@ a.app-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.
 .app-hero .shot { width: 100%; max-width: 1000px; height: auto; margin: 48px auto 0; }
 
 .features { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
-.feature .icon { font-size: 26px; margin-bottom: 8px; }
+.icon {
+  width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; margin-bottom: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+}
+.icon svg { width: 21px; height: 21px; }
+.icon.coral  { color: #ff8a7d; background: rgba(255, 106, 92, .14); }
+.icon.amber  { color: #ffc46b; background: rgba(255, 179, 92, .14); }
+.icon.violet { color: #c4a6ff; background: rgba(177, 140, 255, .15); }
+.icon.blue   { color: #7cb8ff; background: rgba(77, 163, 255, .14); }
+.icon.green  { color: #6ee08a; background: rgba(52, 199, 89, .14); }
 .feature h3 { font-size: 17px; margin-bottom: 4px; }
 .feature p { color: var(--muted); font-size: 15px; }
 
+.shortcut-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start; }
+.shortcut-groups > * { min-width: 0; }
+.shortcut-groups h3 { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.key-list { list-style: none; }
+.key-list li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.07); font-size: 15px; }
+.key-list li:last-child { border-bottom: 0; }
+.key-list.compact { margin-top: 10px; border-top: 1px solid rgba(255,255,255,.07); }
+.keys { display: inline-flex; align-items: center; gap: 4px; flex: none; }
+.keys .sep { color: var(--muted); font-size: 13px; padding: 0 2px; }
+.tool-grid { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; }
+.tool-grid li { display: flex; align-items: center; gap: 10px; font-size: 15px; }
+.hint { margin-top: 12px; font-size: 13px; color: var(--muted); }
 table.shortcuts { width: 100%; border-collapse: collapse; }
 table.shortcuts td { padding: 11px 4px; border-bottom: 1px solid var(--surface-border); vertical-align: middle; }
 table.shortcuts td:first-child { width: 38%; white-space: nowrap; }
@@ -160,8 +183,14 @@ pre {
 .site-footer a { color: var(--text); text-decoration: none; }
 
 /* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .shortcut-groups { grid-template-columns: 1fr 1fr; }
+}
 @media (max-width: 860px) {
   .two-col { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .shortcut-groups { grid-template-columns: 1fr; }
 }
 @media (max-width: 520px) {
   .wrap { padding: 0 16px; }
