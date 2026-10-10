@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TıkKare social card</title>
+<style>
+  :root {
+    --bg1: #0b1020;
+    --bg2: #1a1240;
+    --accent: #ff4d4f;
+    --accent2: #7c5cff;
+    --text: #f5f6fa;
+    --muted: #a3a9c2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; }
+  body {
+    font-family: -apple-system, "SF Pro Display", "Helvetica Neue", sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(900px 600px at 85% 15%, rgba(124, 92, 255, .35), transparent 60%),
+      radial-gradient(700px 500px at 10% 95%, rgba(255, 77, 79, .25), transparent 60%),
+      linear-gradient(160deg, var(--bg1), var(--bg2));
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .card { position: relative; width: 100%; height: 100%; display: flex; }
+
+  /* ---------- Copy ---------- */
+  .copy { display: flex; flex-direction: column; }
+  .badge {
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 15px; font-weight: 600; letter-spacing: .02em;
+    padding: 7px 14px; border-radius: 999px;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+    color: #d9dcf0;
+  }
+  .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #34c759; box-shadow: 0 0 10px #34c759; }
+  .brand { display: flex; align-items: center; gap: 16px; }
+  .logo {
+    width: 64px; height: 64px; border-radius: 16px;
+    background: linear-gradient(145deg, #ff6a5c, #c2185b 55%, #7c5cff);
+    display: grid; place-items: center;
+    box-shadow: 0 10px 30px rgba(255, 77, 79, .35), inset 0 1px 0 rgba(255,255,255,.35);
+  }
+  h1 { font-size: 64px; font-weight: 800; letter-spacing: -.03em; }
+  .tagline { font-weight: 700; letter-spacing: -.02em; line-height: 1.12; }
+  .tagline em { font-style: normal; background: linear-gradient(90deg, #ff7a6b, #b18cff); -webkit-background-clip: text; color: transparent; }
+  .features { list-style: none; display: grid; gap: 12px; }
+  .features li { display: flex; align-items: center; gap: 12px; font-size: 20px; color: #dfe2f3; }
+  .features svg { flex: none; }
+  .footer { display: flex; align-items: center; gap: 10px; font-size: 18px; color: var(--muted); font-weight: 500; }
+  .footer b { color: var(--text); font-weight: 600; }
+
+  /* ---------- Mockup ---------- */
+  .stage { position: relative; }
+  .mock {
+    position: absolute; width: 760px; height: 540px; transform-origin: top left;
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08);
+    background: #f4f5f8;
+  }
+  .win-bar { height: 34px; background: #e7e8ee; display: flex; align-items: center; gap: 8px; padding: 0 14px; border-bottom: 1px solid #d6d8e0; }
+  .win-bar i { width: 12px; height: 12px; border-radius: 50%; display: block; }
+  .win-bar .t { margin-left: 16px; font-size: 13px; color: #6b7080; font-weight: 600; }
+  .app { display: flex; height: calc(100% - 34px); }
+  .side { width: 170px; background: #eceef3; padding: 18px 14px; display: grid; gap: 12px; align-content: start; }
+  .side span { height: 10px; border-radius: 5px; background: #d3d6df; }
+  .main { flex: 1; padding: 26px 28px; display: grid; gap: 14px; align-content: start; }
+  .line { height: 11px; border-radius: 6px; background: #dcdfe7; }
+  .panel { background: #fff; border-radius: 12px; padding: 18px 20px; border: 1px solid #e3e5ec; display: grid; gap: 10px; }
+  .panel h3 { font-size: 17px; color: #1d2030; display: flex; align-items: center; gap: 8px; }
+  .err { justify-self: start; color: #d92d20; font-size: 14px; font-weight: 600; }
+  .mono { justify-self: start; font-family: "SF Mono", Menlo, monospace; font-size: 13px; color: #3b4050; }
+  .btn { justify-self: start; background: #2563eb; color: #fff; font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 8px; }
+
+  /* Frozen-screen dimming with a clear selection hole */
+  .dim { position: absolute; inset: 0; background: rgba(0,0,0,.42); pointer-events: none; }
+  .sel { position: absolute; box-shadow: 0 0 0 9999px rgba(0,0,0,.42); outline: 1.5px solid #0a84ff; }
+  .size { position: absolute; font: 600 11px/1 "SF Mono", Menlo, monospace; color: #fff; background: rgba(0,0,0,.72); padding: 5px 7px; border-radius: 4px; }
+  .handle { position: absolute; width: 8px; height: 8px; background: #fff; border: 1px solid #0a84ff; }
+  .pix { display: inline-grid; grid-template-columns: repeat(14, 9px); grid-auto-rows: 9px; vertical-align: middle; border-radius: 2px; overflow: hidden; }
+  .pix i { display: block; }
+
+  .toolbar {
+    position: absolute;
+    display: flex; align-items: center; gap: 2px; padding: 5px 8px;
+    background: rgba(30,30,34,.92); border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08);
+  }
+  .toolbar .b { width: 26px; height: 26px; display: grid; place-items: center; border-radius: 6px; }
+  .toolbar .b.on { background: rgba(10,132,255,.28); }
+  .toolbar .sep { width: 1px; height: 18px; background: rgba(255,255,255,.18); margin: 0 4px; }
+  .toolbar svg { stroke: #e9e9ee; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .toolbar .on svg { stroke: #4da3ff; }
+  .swatch { width: 16px; height: 16px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 1.5px rgba(255,255,255,.8); }
+
+  .ann { position: absolute; pointer-events: none; }
+  .num {
+    position: absolute; width: 26px; height: 26px; border-radius: 50%;
+    background: var(--accent); color: #fff; font: 800 14px/26px -apple-system, sans-serif; text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,.35);
+  }
+  .note { position: absolute; font: 700 20px/1 -apple-system, sans-serif; color: var(--accent); text-shadow: 0 0 3px rgba(255,255,255,.9); }
+
+  /* ---------- Layouts ---------- */
+  body.square .card { flex-direction: column; padding: 76px 80px 64px; }
+  body.square .copy { gap: 22px; }
+  body.square .tagline { font-size: 46px; max-width: 960px; }
+  body.square .features { grid-template-columns: 1fr 1fr; column-gap: 28px; }
+  body.square .stage { flex: 1; margin-top: 40px; }
+  body.square .mock { left: 50%; top: 0; transform: translateX(-50%) scale(1.22); transform-origin: top center; }
+  body.square .footer { position: absolute; left: 80px; bottom: 52px; }
+
+  body.wide .card { flex-direction: row; padding: 54px 56px; gap: 40px; }
+  body.wide .copy { width: 470px; flex: none; gap: 16px; }
+  body.wide .logo { width: 52px; height: 52px; border-radius: 13px; }
+  body.wide h1 { font-size: 52px; }
+  body.wide .tagline { font-size: 33px; }
+  body.wide .features li { font-size: 17px; }
+  body.wide .features { gap: 9px; }
+  body.wide .stage { flex: 1; }
+  body.wide .mock { left: 0; top: 50%; transform: translateY(-50%) scale(.74); transform-origin: left center; }
+  body.wide .footer { margin-top: auto; font-size: 16px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="copy">
+    <span class="badge"><span class="dot"></span>Free &amp; open source · Native on Apple silicon</span>
+    <div class="brand">
+      <div class="logo">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12"/>
+        </svg>
+      </div>
+      <h1>TıkKare</h1>
+    </div>
+    <p class="tagline">Capture, annotate, <em>done.</em><br>Screenshots for macOS.</p>
+    <ul class="features">
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff7a6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/></svg>Area, window, full screen &amp; scrolling</li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffb35c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>9 annotation tools, right on screen</li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#b18cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>OCR: copy text from anything</li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>100% local. No cloud, no account</li>
+    </ul>
+    <div class="footer wide-only"></div>
+  </div>
+
+  <div class="stage">
+    <div class="mock">
+      <div class="win-bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="t">Checkout — Dashboard</span></div>
+      <div class="app">
+        <div class="side"><span style="width:80%"></span><span></span><span style="width:60%"></span><span style="width:75%"></span><span style="width:50%"></span><span></span><span style="width:65%"></span></div>
+        <div class="main">
+          <div class="line" style="width:40%;height:16px;background:#c9cdd8"></div>
+          <div class="line" style="width:85%"></div>
+          <div class="panel" id="panel">
+            <h3>⚠️ Payment failed</h3>
+            <div class="err" id="err">Error E-4021: card_declined</div>
+            <div class="mono" id="trace">at CheckoutService.swift:142</div>
+            <div class="mono">API key: <span class="pix" id="pix"></span></div>
+            <div class="btn" id="retry">Retry payment</div>
+          </div>
+          <div class="line" style="width:70%"></div>
+          <div class="line" style="width:55%"></div>
+          <div class="line" style="width:78%"></div>
+        </div>
+      </div>
+
+      <div class="sel"></div>
+      <div class="size"></div>
+      <svg class="ann" id="ann" width="760" height="540" style="left:0;top:0"></svg>
+      <div class="note" id="note">Fix this!</div>
+
+      <div class="toolbar">
+        <div class="b on"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></div>
+        <div class="b"><svg width="16" height="16" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="1"/></svg></div>
+        <div class="b"><svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></div>
+        <div class="b"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
+        <div class="b"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M5 19 19 5"/></svg></div>
+        <div class="b"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M5 7V5h14v2M9 19h6M12 5v14"/></svg></div>
+        <div class="b"><svg width="16" height="16" viewBox="0 0 24 24"><path d="m9 11-6 6v3h9l3-3M22 12l-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/></svg></div>
+        <div class="b"><svg width="16" height="16" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 12h16M12 4v16"/></svg></div>
+        <div class="b"><svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M11 9l2-1v8"/></svg></div>
+        <div class="sep"></div>
+        <div class="b"><div class="swatch"></div></div>
+        <div class="sep"></div>
+        <div class="b"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg></div>
+        <div class="b"><svg width="16" height="16" viewBox="0 0 24 24"><path d="m15 14 5-5-5-5"/><path d="M20 9H9a5 5 0 0 0 0 10h3"/></svg></div>
+        <div class="sep"></div>
+        <div class="b"><svg width="16" height="16" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v4h6V3"/></svg></div>
+        <div class="b"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></div>
+        <div class="b"><svg width="16" height="16" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></div>
+        <div class="b"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer square-only"></div>
+</div>
+
+<script>
+  const layout = location.hash === "#wide" ? "wide" : "square";
+  document.body.classList.add(layout);
+
+  const footerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="#a3a9c2"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.39-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg><span>github.com/<b>mrtozn1923/macos-apps</b></span>';
+  document.querySelector(layout === "wide" ? ".footer.wide-only" : ".footer.square-only").innerHTML = footerHTML;
+  document.querySelector(layout === "wide" ? ".footer.square-only" : ".footer.wide-only").remove();
+
+  // Pixelated "secret" block, like TıkKare's blur tool.
+  const pix = document.getElementById("pix");
+  const shades = ["#5b6170", "#8b90a0", "#a9aebb", "#6e7484", "#c3c7d1", "#7a8090", "#9aa0ae"];
+  for (let i = 0; i < 28; i++) {
+    const cell = document.createElement("i");
+    cell.style.background = shades[(i * 5 + (i >> 2)) % shades.length];
+    pix.appendChild(cell);
+  }
+
+  // Place selection, handles and annotations relative to the real content (mock coordinates).
+  const mock = document.querySelector(".mock");
+  const m = mock.getBoundingClientRect();
+  const k = m.width / 760;
+  const box = (el) => {
+    const r = el.getBoundingClientRect();
+    return { x: (r.left - m.left) / k, y: (r.top - m.top) / k, w: r.width / k, h: r.height / k };
+  };
+  const place = (el, x, y) => { el.style.left = x + "px"; el.style.top = y + "px"; };
+
+  const panel = box(document.getElementById("panel"));
+  const sel = { x: panel.x - 14, y: panel.y - 16, w: panel.w + 28, h: panel.h + 34 };
+  const selEl = document.querySelector(".sel");
+  Object.assign(selEl.style, { left: sel.x + "px", top: sel.y + "px", width: sel.w + "px", height: sel.h + "px" });
+  const size = document.querySelector(".size");
+  size.textContent = Math.round(sel.w * 4) + " × " + Math.round(sel.h * 4);
+  place(size, sel.x, sel.y - 26);
+  for (const [fx, fy] of [[0,0],[.5,0],[1,0],[0,.5],[1,.5],[0,1],[.5,1],[1,1]]) {
+    const h = document.createElement("div");
+    h.className = "handle";
+    place(h, sel.x + sel.w * fx - 4, sel.y + sel.h * fy - 4);
+    mock.appendChild(h);
+  }
+  const toolbar = document.querySelector(".toolbar");
+  place(toolbar, sel.x + sel.w - toolbar.offsetWidth, sel.y + sel.h + 12);
+
+  const err = box(document.getElementById("err"));
+  const trace = box(document.getElementById("trace"));
+  const retry = box(document.getElementById("retry"));
+  const svg = document.getElementById("ann");
+  const ns = "http://www.w3.org/2000/svg";
+  const add = (tag, attrs) => {
+    const el = document.createElementNS(ns, tag);
+    for (const [a, v] of Object.entries(attrs)) el.setAttribute(a, v);
+    svg.appendChild(el);
+    return el;
+  };
+  add("defs", {}).innerHTML = '<marker id="head" markerWidth="5" markerHeight="5" refX="2.6" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#ff4d4f"/></marker>';
+
+  // Highlighter over the stack trace line.
+  add("rect", { x: trace.x - 3, y: trace.y - 1, width: trace.w + 6, height: trace.h + 2, fill: "#ffd60a", "fill-opacity": ".5", style: "mix-blend-mode:multiply" });
+  // Red box around the error.
+  add("rect", { x: err.x - 6, y: err.y - 5, width: err.w + 12, height: err.h + 10, rx: 2, fill: "none", stroke: "#ff4d4f", "stroke-width": 3 });
+  // Arrow from the note to the error box.
+  const tipX = err.x + err.w + 12, tipY = err.y + err.h / 2;
+  add("line", { x1: sel.x + sel.w - 70, y1: sel.y + 58, x2: tipX + 14, y2: tipY - 4, stroke: "#ff4d4f", "stroke-width": 5, "stroke-linecap": "round", "marker-end": "url(#head)" });
+  place(document.getElementById("note"), sel.x + sel.w - 150, sel.y + 22);
+  // Green ellipse around the button.
+  add("ellipse", { cx: retry.x + retry.w / 2, cy: retry.y + retry.h / 2, rx: retry.w / 2 + 16, ry: retry.h / 2 + 10, fill: "none", stroke: "#34c759", "stroke-width": 3 });
+
+  const badge = (n, x, y) => {
+    const b = document.createElement("div");
+    b.className = "num";
+    b.textContent = n;
+    place(b, x, y);
+    mock.appendChild(b);
+  };
+  badge(1, err.x - 6 - 30, err.y + err.h / 2 - 13);
+  badge(2, retry.x + retry.w + 24, retry.y + retry.h / 2 - 13);
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+/* Capture modes */
+"Area / Window" = "Alan / Pencere";
+"Full Screen" = "Tam Ekran";
+"Scrolling Capture" = "Kaydırarak Yakala";
+"Capture Text (OCR)" = "Metin Yakala (OCR)";
+
+/* Tools */
+"Arrow (A)" = "Ok (A)";
+"Rectangle (R)" = "Dikdörtgen (R)";
+"Ellipse (E)" = "Elips (E)";
+"Pen (P)" = "Kalem (P)";
+"Line (L)" = "Çizgi (L)";
+"Text (T)" = "Metin (T)";
+"Highlighter (H)" = "Vurgulayıcı (H)";
+"Blur (B)" = "Bulanıklaştır (B)";
+"Number (N)" = "Numara (N)";
+"Thin" = "İnce";
+"Medium" = "Orta";
+"Thick" = "Kalın";
+
+/* Colors */
+"Red" = "Kırmızı";
+"Orange" = "Turuncu";
+"Yellow" = "Sarı";
+"Green" = "Yeşil";
+"Blue" = "Mavi";
+"Purple" = "Mor";
+"Black" = "Siyah";
+"White" = "Beyaz";
+"Custom Color…" = "Özel Renk…";
+
+/* Toolbar */
+"Color (1-8)" = "Renk (1-8)";
+"Undo (⌘Z)" = "Geri Al (⌘Z)";
+"Redo (⌘⇧Z)" = "Yinele (⌘⇧Z)";
+"Open in Editor (⌘E)" = "Editörde Aç (⌘E)";
+"Save (⌘S)" = "Kaydet (⌘S)";
+"Copy (⌘C / Enter)" = "Kopyala (⌘C / Enter)";
+"Close (Esc)" = "Kapat (Esc)";
+
+/* Notifications */
+"Copied to clipboard" = "Panoya kopyalandı";
+"Saved: %@" = "Kaydedildi: %@";
+"No text found" = "Metin bulunamadı";
+"Text copied: %@" = "Metin kopyalandı: %@";
+
+/* Menu bar */
+"Open Save Folder" = "Kayıt Klasörünü Aç";
+"Settings…" = "Ayarlar…";
+"Quit TıkKare" = "TıkKare'den Çık";
+
+/* Permissions */
+"Screen recording permission required" = "Ekran kaydı izni gerekli";
+"To take screenshots, allow TıkKare in System Settings › Privacy & Security › Screen & System Audio Recording. You may need to restart TıkKare after granting permission." = "TıkKare'nin ekran görüntüsü alabilmesi için Sistem Ayarları › Gizlilik ve Güvenlik › Ekran ve Sistem Sesi Kaydı bölümünden izin verin. İzin verdikten sonra TıkKare'yi yeniden başlatmanız gerekebilir.";
+"Open Settings" = "Ayarları Aç";
+"Cancel" = "Vazgeç";
+
+/* Errors */
+"Display not found." = "Ekran bulunamadı.";
+"Window not found." = "Pencere bulunamadı.";
+"Could not create the image." = "Görüntü oluşturulamadı.";
+
+/* Scrolling capture */
+"Scroll down…" = "Aşağı kaydırın…";
+"Scroll down… %ld px" = "Aşağı kaydırın… %ld px";
+"Scroll a bit slower" = "Biraz daha yavaş kaydırın";
+"Done" = "Bitti";
+
+/* Settings */
+"TıkKare Settings" = "TıkKare Ayarları";
+"Shortcuts" = "Kısayollar";
+"In use by another app" = "Başka bir uygulama kullanıyor";
+"Click and press new keys to change. ⌫ clears the shortcut, Esc cancels." = "Değiştirmek için tıklayıp yeni tuşlara basın. ⌫ kısayolu siler, Esc vazgeçer.";
+"No shortcut" = "Kısayol yok";
+"Press keys…" = "Tuşlara basın…";
+"Saving" = "Kaydetme";
+"Folder" = "Klasör";
+"Change…" = "Değiştir…";
+"Choose" = "Seç";
+"Show folder in Finder" = "Klasörü Finder'da göster";
+"Also copy to clipboard when saving" = "Kaydederken panoya da kopyala";
+"General" = "Genel";
+"Capture sound" = "Yakalama sesi";
+"Launch at login" = "Girişte başlat";
+"Could not change: %@" = "Ayarlanamadı: %@";
