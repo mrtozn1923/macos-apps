@@ -1,6 +1,6 @@
 [English](README.md) | **Türkçe**
 
-![TıkKare — macOS için ekran görüntüsü aracı](TikKare/docs/social/tikkare-linkedin-wide.png)
+![macOS Uygulamaları — TıkKare ve NabızTut](docs/assets/social-preview.png)
 
 # macOS Uygulamaları
 
