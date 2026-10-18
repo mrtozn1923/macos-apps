@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NabızTut — uptime monitor for macOS</title>
+<meta name="description" content="NabızTut is a free, open-source, fully local desktop uptime monitor for macOS: HTTP, ping and TCP checks, alerts and response-time charts.">
+<meta property="og:title" content="NabızTut — uptime monitor for macOS">
+<meta property="og:description" content="Is it up? Just glance at your desktop. Free, open source and fully local.">
+<meta property="og:image" content="https://mrtozn1923.github.io/macos-apps/assets/nabiztut/nabiztut-linkedin-wide.png">
+<meta property="og:url" content="https://mrtozn1923.github.io/macos-apps/nabiztut/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2330d158'/%3E%3Cstop offset='.55' stop-color='%230a9f6e'/%3E%3Cstop offset='1' stop-color='%232b6cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M4 16h5l3-8 5 16 3-8h8' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/site.css?v=5">
+<script src="../assets/site.js?v=5" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand-link" href="../">
+      <svg class="mini-logo" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6a5c"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs><rect width="32" height="32" rx="8" fill="url(#hg)"/><g fill="#fff"><rect x="7" y="7" width="8" height="8" rx="2"/><rect x="17" y="7" width="8" height="8" rx="2"/><rect x="7" y="17" width="8" height="8" rx="2"/><rect x="17" y="17" width="8" height="8" rx="2" opacity=".5"/></g></svg>
+      macOS Apps
+    </a>
+    <nav class="nav">
+      <a class="hide-sm" href="#features" data-i18n="nav.features">Features</a>
+      <a class="hide-sm" href="#install" data-i18n="nav.install">Install</a>
+      <a class="hide-sm" href="https://github.com/mrtozn1923/macos-apps/tree/main/NabizTut">GitHub</a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="tr" aria-pressed="false">TR</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="app-hero">
+      <div class="intro">
+        <span class="badge"><span class="dot"></span><span data-i18n="hero.badge">Free &amp; open source · Native on Apple silicon</span></span>
+        <div class="title">
+          <div class="app-logo pulse"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2.5-6 4 12 2.5-6H22"/></svg></div>
+          <h1>NabızTut</h1>
+        </div>
+        <p class="lead"><span data-i18n="hero.lead1">Is it up?</span> <span class="gradient-text green" data-i18n="hero.lead2">Just glance.</span></p>
+        <p class="muted" data-i18n="hero.text">A desktop uptime monitor for your websites, APIs and servers. Turkish for “keep the pulse”.</p>
+        <div class="actions">
+          <a class="btn btn-primary green" href="https://github.com/mrtozn1923/macos-apps/releases/download/nabiztut-v1.0.0/NabizTut.zip">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+            <span data-i18n="hero.download">Download for Mac</span>
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/mrtozn1923/macos-apps/tree/main/NabizTut" data-i18n="hero.source">View source</a>
+        </div>
+        <p class="meta muted" data-i18n="hero.meta">v1.0.0 · macOS 14 or later · Apple silicon · English &amp; Turkish</p>
+      </div>
+      <img class="shot" src="../assets/nabiztut/mockup.png?v=5" width="860" height="550" alt="NabızTut desktop panel with five monitored sites, a down notification and a 24-hour response-time chart">
+    </section>
+
+    <section id="features">
+      <h2 data-i18n="features.title">Your sites' pulse, always in sight</h2>
+      <div class="features">
+        <div class="card feature"><div class="icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h6M7 13h10M7 17h4"/></svg></div><h3 data-i18n="f1.title">Desktop panel</h3><p data-i18n="f1.text">Sits on your desktop, below your windows. Status, response time, uptime and a sparkline for every site.</p></div>
+        <div class="card feature"><div class="icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div><h3 data-i18n="f2.title">HTTP(S) checks</h3><p data-i18n="f2.text">Expected status codes, keyword in the response, custom method, headers and body, redirect handling.</p></div>
+        <div class="card feature"><div class="icon violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></div><h3 data-i18n="f3.title">Ping &amp; TCP</h3><p data-i18n="f3.text">Watch servers, databases and any service port, not just websites.</p></div>
+        <div class="card feature"><div class="icon coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div><h3 data-i18n="f4.title">Down alerts</h3><p data-i18n="f4.text">Notification and sound when a site goes down, another when it recovers with the outage duration.</p></div>
+        <div class="card feature"><div class="icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></div><h3 data-i18n="f5.title">Charts &amp; history</h3><p data-i18n="f5.text">24 h, 7 d and 30 d response-time charts with outages marked, uptime %, average and p95.</p></div>
+        <div class="card feature"><div class="icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><path d="M12 15v2"/></svg></div><h3 data-i18n="f6.title">SSL expiry warning</h3><p data-i18n="f6.text">A one-time heads-up before a certificate expires, so nothing breaks on a Sunday.</p></div>
+        <div class="card feature"><div class="icon violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="m10.8 12.2 8.7-8.7M18 5l2 2M15 8l2 2"/></svg></div><h3 data-i18n="f7.title">Secrets in Keychain</h3><p data-i18n="f7.text">API keys and tokens in headers are stored in the macOS Keychain, not in a plain settings file.</p></div>
+        <div class="card feature"><div class="icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 data-i18n="f8.title">100% local</h3><p data-i18n="f8.text">No server, no account, no tracking. Your list of sites stays on your Mac.</p></div>
+      </div>
+    </section>
+
+    <section id="polite">
+      <h2 data-i18n="polite.title">Polite by design</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3 class="eyebrow" data-i18n="polite.requests">Requests</h3>
+          <ul class="key-list">
+            <li><span data-i18n="p.interval">Check interval</span><span class="value" data-i18n="p.intervalv">1 – 60 min · default 5</span></li>
+            <li><span data-i18n="p.spread">Checks are spread out</span><span class="value" data-i18n="p.spreadv">never all at once</span></li>
+            <li><span data-i18n="p.confirm">Marked down after</span><span class="value" data-i18n="p.confirmv">2 failures · 30 s apart</span></li>
+            <li><span data-i18n="p.head">Page content not needed</span><span class="value"><code>HEAD</code></span></li>
+            <li><span data-i18n="p.ua">Identifies itself</span><span class="value"><code>User-Agent: NabizTut</code></span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="eyebrow" data-i18n="polite.data">Data &amp; sleep</h3>
+          <ul class="key-list">
+            <li><span data-i18n="p.raw">Every check</span><span class="value" data-i18n="p.rawv">kept 7 days</span></li>
+            <li><span data-i18n="p.hourly">Hourly summaries</span><span class="value" data-i18n="p.hourlyv">kept 30 days</span></li>
+            <li><span data-i18n="p.sleep">Mac asleep or offline</span><span class="value" data-i18n="p.sleepv">checks pause</span></li>
+            <li><span data-i18n="p.downtime">Sleep time</span><span class="value" data-i18n="p.downtimev">never counted as downtime</span></li>
+            <li><span data-i18n="p.files">Stored in</span><span class="value"><code>~/Library/Application Support</code></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="install">
+      <h2 data-i18n="install.title">Install</h2>
+      <div class="two-col">
+        <div class="card">
+          <ol class="steps">
+            <li><div data-i18n-html="i1">Download <a href="https://github.com/mrtozn1923/macos-apps/releases/download/nabiztut-v1.0.0/NabizTut.zip"><code>NabizTut.zip</code></a>, open it and move <code>NabizTut.app</code> to your Applications folder.</div></li>
+            <li><div data-i18n-html="i2">NabızTut isn't notarized by Apple yet, so macOS blocks the first launch. Try to open it once, then go to <b>System Settings › Privacy &amp; Security</b> and click <b>Open Anyway</b>.</div></li>
+            <li><div data-i18n-html="i3">Allow notifications, add your first site and drag the panel by its top bar to where you want it.</div></li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:6px" data-i18n="build.title">Build from source</h3>
+          <p class="muted" data-i18n="build.text">Requires Xcode or the Command Line Tools.</p>
+<pre><code>git clone https://github.com/mrtozn1923/macos-apps.git
+cd macos-apps/NabizTut
+./scripts/build.sh --install</code></pre>
+          <p class="note" style="margin-top:16px" data-i18n="build.note">The app's interface follows your macOS language: Turkish or English.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Mert Özen · <span data-i18n="footer.license">MIT License</span></span>
+    <a href="../" data-i18n="footer.all">← All apps</a>
+  </div>
+</footer>
+
+<script>
+const DOWNLOAD = "https://github.com/mrtozn1923/macos-apps/releases/download/nabiztut-v1.0.0/NabizTut.zip";
+window.I18N = {
+  en: {
+    "meta.title": "NabızTut — uptime monitor for macOS",
+    "meta.description": "NabızTut is a free, open-source, fully local desktop uptime monitor for macOS: HTTP, ping and TCP checks, alerts and response-time charts.",
+    "nav.features": "Features", "nav.install": "Install",
+    "hero.badge": "Free & open source · Native on Apple silicon",
+    "hero.lead1": "Is it up?", "hero.lead2": "Just glance.",
+    "hero.text": "A desktop uptime monitor for your websites, APIs and servers. Turkish for “keep the pulse”.",
+    "hero.download": "Download for Mac", "hero.source": "View source",
+    "hero.meta": "v1.0.0 · macOS 14 or later · Apple silicon · English & Turkish",
+    "features.title": "Your sites' pulse, always in sight",
+    "f1.title": "Desktop panel", "f1.text": "Sits on your desktop, below your windows. Status, response time, uptime and a sparkline for every site.",
+    "f2.title": "HTTP(S) checks", "f2.text": "Expected status codes, keyword in the response, custom method, headers and body, redirect handling.",
+    "f3.title": "Ping & TCP", "f3.text": "Watch servers, databases and any service port, not just websites.",
+    "f4.title": "Down alerts", "f4.text": "Notification and sound when a site goes down, another when it recovers with the outage duration.",
+    "f5.title": "Charts & history", "f5.text": "24 h, 7 d and 30 d response-time charts with outages marked, uptime %, average and p95.",
+    "f6.title": "SSL expiry warning", "f6.text": "A one-time heads-up before a certificate expires, so nothing breaks on a Sunday.",
+    "f7.title": "Secrets in Keychain", "f7.text": "API keys and tokens in headers are stored in the macOS Keychain, not in a plain settings file.",
+    "f8.title": "100% local", "f8.text": "No server, no account, no tracking. Your list of sites stays on your Mac.",
+    "polite.title": "Polite by design", "polite.requests": "Requests", "polite.data": "Data & sleep",
+    "p.interval": "Check interval", "p.intervalv": "1 – 60 min · default 5",
+    "p.spread": "Checks are spread out", "p.spreadv": "never all at once",
+    "p.confirm": "Marked down after", "p.confirmv": "2 failures · 30 s apart",
+    "p.head": "Page content not needed", "p.ua": "Identifies itself",
+    "p.raw": "Every check", "p.rawv": "kept 7 days", "p.hourly": "Hourly summaries", "p.hourlyv": "kept 30 days",
+    "p.sleep": "Mac asleep or offline", "p.sleepv": "checks pause", "p.downtime": "Sleep time", "p.downtimev": "never counted as downtime",
+    "p.files": "Stored in",
+    "install.title": "Install",
+    "i1": `Download <a href="${DOWNLOAD}"><code>NabizTut.zip</code></a>, open it and move <code>NabizTut.app</code> to your Applications folder.`,
+    "i2": "NabızTut isn't notarized by Apple yet, so macOS blocks the first launch. Try to open it once, then go to <b>System Settings › Privacy &amp; Security</b> and click <b>Open Anyway</b>.",
+    "i3": "Allow notifications, add your first site and drag the panel by its top bar to where you want it.",
+    "build.title": "Build from source", "build.text": "Requires Xcode or the Command Line Tools.",
+    "build.note": "The app's interface follows your macOS language: Turkish or English.",
+    "footer.license": "MIT License", "footer.all": "← All apps"
+  },
+  tr: {
+    "meta.title": "NabızTut — macOS için uptime izleyici",
+    "meta.description": "NabızTut; macOS için ücretsiz, açık kaynak ve tamamen yerel bir masaüstü uptime izleyicidir: HTTP, ping ve TCP kontrolleri, bildirimler ve cevap süresi grafikleri.",
+    "nav.features": "Özellikler", "nav.install": "Kurulum",
+    "hero.badge": "Ücretsiz ve açık kaynak · Apple silicon için native",
+    "hero.lead1": "Ayakta mı?", "hero.lead2": "Bir bakış yeter.",
+    "hero.text": "Web siteleri, API'ler ve sunucular için masaüstü uptime izleyici. Sitelerinin nabzını tutar.",
+    "hero.download": "Mac için indir", "hero.source": "Kaynak kodu",
+    "hero.meta": "v1.0.0 · macOS 14 veya üstü · Apple silicon · Türkçe ve İngilizce",
+    "features.title": "Sitelerinin nabzı hep gözünün önünde",
+    "f1.title": "Masaüstü paneli", "f1.text": "Masaüstünde, pencerelerin altında durur. Her site için durum, cevap süresi, uptime ve mini grafik.",
+    "f2.title": "HTTP(S) kontrolleri", "f2.text": "Beklenen durum kodları, cevapta kelime kontrolü, özel metot, header ve gövde, yönlendirme ayarı.",
+    "f3.title": "Ping ve TCP", "f3.text": "Sadece web sitelerini değil; sunucuları, veritabanlarını ve her servis portunu izle.",
+    "f4.title": "Düşüş bildirimleri", "f4.text": "Bir site düşünce bildirim ve ses, geri gelince kesinti süresiyle birlikte yeni bir bildirim.",
+    "f5.title": "Grafik ve geçmiş", "f5.text": "Kesintilerin işaretli olduğu 24 saat, 7 gün ve 30 gün grafikleri; uptime %, ortalama ve p95.",
+    "f6.title": "SSL bitiş uyarısı", "f6.text": "Sertifika bitmeden bir kez haber verir; pazar günü sürpriz yaşamazsın.",
+    "f7.title": "Gizli bilgiler Anahtar Zinciri'nde", "f7.text": "Header'lardaki API anahtarları ve token'lar düz bir ayar dosyasında değil, macOS Anahtar Zinciri'nde saklanır.",
+    "f8.title": "Tamamen yerel", "f8.text": "Sunucu yok, hesap yok, takip yok. Site listen Mac'inde kalır.",
+    "polite.title": "Kibar istekler", "polite.requests": "İstekler", "polite.data": "Veri ve uyku",
+    "p.interval": "Kontrol aralığı", "p.intervalv": "1 – 60 dk · varsayılan 5",
+    "p.spread": "Kontroller zamana yayılır", "p.spreadv": "hepsi aynı anda değil",
+    "p.confirm": "Düştü sayılması için", "p.confirmv": "2 hata · 30 sn arayla",
+    "p.head": "Sayfa içeriği gerekmiyorsa", "p.ua": "Kendini tanıtır",
+    "p.raw": "Her kontrol", "p.rawv": "7 gün saklanır", "p.hourly": "Saatlik özetler", "p.hourlyv": "30 gün saklanır",
+    "p.sleep": "Mac uykuda veya çevrimdışı", "p.sleepv": "kontroller durur", "p.downtime": "Uyku süresi", "p.downtimev": "kesinti sayılmaz",
+    "p.files": "Konum",
+    "install.title": "Kurulum",
+    "i1": `<a href="${DOWNLOAD}"><code>NabizTut.zip</code></a> dosyasını indir, aç ve <code>NabizTut.app</code>'i Uygulamalar klasörüne taşı.`,
+    "i2": "NabızTut henüz Apple tarafından notarize edilmediği için macOS ilk açılışı engeller. Bir kez açmayı dene, sonra <b>Sistem Ayarları › Gizlilik ve Güvenlik</b> bölümünde <b>Yine de Aç</b>'a tıkla.",
+    "i3": "Bildirimlere izin ver, ilk siteni ekle ve paneli üst çubuğundan sürükleyerek istediğin yere taşı.",
+    "build.title": "Kaynaktan derleme", "build.text": "Xcode veya Command Line Tools gerekir.",
+    "build.note": "Uygulamanın arayüzü macOS dilini takip eder: Türkçe ya da İngilizce.",
+    "footer.license": "MIT Lisansı", "footer.all": "← Tüm uygulamalar"
+  }
+};
+</script>
+</body>
+</html>

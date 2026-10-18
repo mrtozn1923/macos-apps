@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>NabızTut social card</title>
+<!-- Source for tikkare-style social images. Layouts: #square (1200×1200), #wide (1200×627), #mock (website mockup). -->
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; }
+  body {
+    font-family: -apple-system, "SF Pro Display", "Helvetica Neue", sans-serif;
+    color: #f5f6fa; -webkit-font-smoothing: antialiased; overflow: hidden;
+    background:
+      radial-gradient(900px 600px at 85% 15%, rgba(52, 199, 89, .22), transparent 60%),
+      radial-gradient(700px 500px at 10% 95%, rgba(124, 92, 255, .30), transparent 60%),
+      linear-gradient(160deg, #0b1020, #13183a);
+  }
+  .card { position: relative; width: 100%; height: 100%; display: flex; }
+  .copy { display: flex; flex-direction: column; }
+  .badge {
+    align-self: flex-start; display: inline-flex; align-items: center; gap: 8px;
+    font-size: 15px; font-weight: 600; padding: 7px 14px; border-radius: 999px;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); color: #d9dcf0;
+  }
+  .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #34c759; box-shadow: 0 0 10px #34c759; }
+  .brand { display: flex; align-items: center; gap: 16px; }
+  .logo {
+    width: 64px; height: 64px; border-radius: 16px; display: grid; place-items: center;
+    background: linear-gradient(145deg, #30d158, #0a9f6e 55%, #2b6cff);
+    box-shadow: 0 10px 30px rgba(48, 209, 88, .30), inset 0 1px 0 rgba(255,255,255,.35);
+  }
+  h1 { font-size: 64px; font-weight: 800; letter-spacing: -.03em; }
+  .meaning { color: #a3a9c2; font-size: 18px; font-weight: 500; margin-top: -6px; }
+  .tagline { font-weight: 700; letter-spacing: -.02em; line-height: 1.12; }
+  .tagline em { font-style: normal; background: linear-gradient(90deg, #4ade80, #7cb8ff); -webkit-background-clip: text; color: transparent; }
+  .features { list-style: none; display: grid; gap: 12px; }
+  .features li { display: flex; align-items: center; gap: 12px; font-size: 20px; color: #dfe2f3; }
+  .features svg { flex: none; }
+  .footer { display: flex; align-items: center; gap: 10px; font-size: 18px; color: #a3a9c2; font-weight: 500; }
+  .footer b { color: #f5f6fa; font-weight: 600; }
+
+  /* ---------- Mockup: a desktop with the panel, a notification and the detail window ---------- */
+  .stage { position: relative; }
+  .desk {
+    position: absolute; width: 780px; height: 430px; border-radius: 14px; overflow: hidden;
+    background:
+      radial-gradient(600px 400px at 20% 20%, #6a7bd8 0%, transparent 60%),
+      radial-gradient(500px 420px at 85% 80%, #d17ab5 0%, transparent 60%),
+      linear-gradient(135deg, #3b4a9b, #7a5aa8 55%, #c47aa0);
+    box-shadow: 0 40px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.10);
+  }
+  .menubar {
+    height: 24px; background: rgba(20,22,40,.35); backdrop-filter: blur(10px);
+    display: flex; align-items: center; justify-content: flex-end; gap: 14px; padding: 0 12px;
+    font-size: 12px; color: #fff; font-weight: 500;
+  }
+  .menubar .pulse { color: #ff5f57; display: flex; }
+
+  .window {
+    position: absolute; left: 22px; top: 56px; width: 450px; height: 330px; border-radius: 12px; overflow: hidden;
+    background: #f4f5f8; color: #1d2030; box-shadow: 0 24px 50px rgba(0,0,0,.40), 0 0 0 1px rgba(0,0,0,.08);
+  }
+  .win-bar { height: 30px; display: flex; align-items: center; gap: 7px; padding: 0 12px; background: #e9eaf0; border-bottom: 1px solid #d8dae2; }
+  .win-bar i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+  .win-bar span { margin-left: 10px; font-size: 12px; font-weight: 600; color: #6b7080; }
+  .win-body { padding: 14px 16px; }
+  .win-title { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 16px; }
+  .win-title .st { width: 10px; height: 10px; border-radius: 50%; background: #30d158; }
+  .win-sub { font-size: 11px; color: #7a7f90; margin: 2px 0 10px 18px; }
+  .seg { display: inline-flex; background: #e3e5ec; border-radius: 7px; padding: 2px; font-size: 11px; font-weight: 600; margin-bottom: 8px; }
+  .seg b { padding: 3px 10px; border-radius: 5px; color: #555b6e; font-weight: 600; }
+  .seg b.on { background: #fff; color: #1d2030; box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+  .chart { width: 100%; height: 120px; }
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; }
+  .cards div { background: #e9ebf1; border-radius: 8px; padding: 7px 9px; }
+  .cards small { display: block; font-size: 10px; color: #7a7f90; }
+  .cards strong { font-size: 15px; }
+
+  .panel {
+    position: absolute; right: 18px; top: 112px; width: 300px; border-radius: 14px; overflow: hidden;
+    background: rgba(28, 30, 44, .72); backdrop-filter: blur(18px) saturate(1.4);
+    border: 1px solid rgba(255,255,255,.14); box-shadow: 0 18px 40px rgba(0,0,0,.35);
+  }
+  .panel-head { display: flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px; font-size: 13px; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,.10); }
+  .panel-head .icons { margin-left: auto; display: flex; gap: 10px; opacity: .8; }
+  .row { display: flex; align-items: center; gap: 9px; padding: 7px 12px; }
+  .row .d { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .row .t { flex: 1; min-width: 0; }
+  .row .n { font-size: 12.5px; font-weight: 600; }
+  .row .s { font-size: 10.5px; color: #a7acc0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .row .m { text-align: right; font-size: 11.5px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .row .m small { display: block; font-size: 10px; font-weight: 500; color: #a7acc0; }
+  .row svg { flex: none; }
+  .down .d { background: #ff453a; box-shadow: 0 0 0 3px rgba(255,69,58,.35); }
+  .down .s { color: #ff6b62; }
+  .warn .d { background: #ffd60a; }
+  .warn .s { color: #ff9f0a; }
+  .up .d { background: #30d158; }
+
+  .notif {
+    position: absolute; right: 18px; top: 36px; width: 300px; border-radius: 13px; padding: 9px 11px;
+    display: flex; gap: 10px; align-items: flex-start;
+    background: rgba(245, 246, 250, .86); backdrop-filter: blur(16px); color: #1d2030;
+    box-shadow: 0 10px 30px rgba(0,0,0,.28);
+  }
+  .notif .ic { width: 30px; height: 30px; border-radius: 8px; flex: none; display: grid; place-items: center;
+    background: linear-gradient(145deg, #30d158, #0a9f6e 55%, #2b6cff); }
+  .notif b { font-size: 12.5px; display: block; }
+  .notif span { font-size: 11.5px; color: #4d5266; }
+  .notif .when { margin-left: auto; font-size: 10.5px; color: #7a7f90; }
+
+  /* ---------- Layouts ---------- */
+  body.square .card { flex-direction: column; padding: 70px 80px 60px; }
+  body.square .copy { gap: 20px; }
+  body.square .tagline { font-size: 46px; }
+  body.square .features { grid-template-columns: 1fr 1fr; column-gap: 28px; }
+  body.square .stage { flex: 1; margin-top: 34px; }
+  body.square .desk { left: 50%; top: 0; transform: translateX(-50%) scale(1.2); transform-origin: top center; }
+  body.square .footer { position: absolute; left: 80px; bottom: 50px; }
+
+  body.wide .card { flex-direction: row; padding: 54px 56px; gap: 34px; }
+  body.wide .copy { width: 460px; flex: none; gap: 15px; }
+  body.wide .logo { width: 52px; height: 52px; border-radius: 13px; }
+  body.wide h1 { font-size: 52px; }
+  body.wide .tagline { font-size: 33px; }
+  body.wide .features li { font-size: 17px; }
+  body.wide .features { gap: 9px; }
+  body.wide .stage { flex: 1; }
+  body.wide .desk { left: 0; top: 50%; transform: translateY(-50%) scale(.80); transform-origin: left center; }
+  body.wide .footer { margin-top: auto; font-size: 16px; }
+
+  body.mockonly { background: transparent; }
+  body.mockonly .copy, body.mockonly .footer { display: none; }
+  body.mockonly .card { padding: 40px 40px 80px; }
+  body.mockonly .stage { flex: 1; }
+  body.mockonly .desk { left: 0; top: 0; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="copy">
+    <span class="badge"><span class="dot"></span>Free &amp; open source · Native on Apple silicon</span>
+    <div class="brand">
+      <div class="logo"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2.5-6 4 12 2.5-6H22"/></svg></div>
+      <div>
+        <h1>NabızTut</h1>
+      </div>
+    </div>
+    <p class="meaning">Turkish for “keep the pulse”</p>
+    <p class="tagline">Is it up? <em>Just glance.</em><br>Uptime monitor for macOS.</p>
+    <ul class="features">
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2.5-6 4 12 2.5-6H22"/></svg>HTTP, ping &amp; TCP checks</li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a7d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>Down alerts with sound</li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7cb8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg>24h / 7d / 30d charts</li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c4a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>100% local. No account</li>
+    </ul>
+    <div class="footer wide-only"></div>
+  </div>
+
+  <div class="stage">
+    <div class="desk">
+      <div class="menubar">
+        <span class="pulse"><svg width="16" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2.5-6 4 12 2.5-6H22"/></svg></span>
+        <span>Wed 14:32</span>
+      </div>
+
+      <div class="window">
+        <div class="win-bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span>example.com</span></div>
+        <div class="win-body">
+          <div class="win-title"><span class="st"></span>example.com</div>
+          <div class="win-sub">HTTP(S) · https://example.com · SSL until 30 Nov 2026</div>
+          <div class="seg"><b class="on">24 hours</b><b>7 days</b><b>30 days</b></div>
+          <svg class="chart" id="chart" viewBox="0 0 418 120" preserveAspectRatio="none"></svg>
+          <div class="cards">
+            <div><small>Uptime</small><strong>99.31%</strong></div>
+            <div><small>Average</small><strong>156 ms</strong></div>
+            <div><small>p95</small><strong>198 ms</strong></div>
+            <div><small>Outages</small><strong>2</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notif">
+        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2.5-6 4 12 2.5-6H22"/></svg></div>
+        <div><b>Staging is down</b><span>HTTP 502 Bad Gateway</span></div>
+        <div class="when">now</div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <span style="width:9px;height:9px;border-radius:50%;background:#ff453a;display:inline-block"></span>4/5 up
+          <span class="icons">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg>
+          </span>
+        </div>
+        <div id="rows"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer square-only"></div>
+</div>
+
+<script>
+  const layout = ({ "#wide": "wide", "#mock": "mockonly" })[location.hash] || "square";
+  document.body.classList.add(layout);
+  const footerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="#a3a9c2"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.39-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg><span>github.com/<b>mrtozn1923/macos-apps</b></span>';
+  if (layout !== "mockonly") {
+    document.querySelector(layout === "wide" ? ".footer.wide-only" : ".footer.square-only").innerHTML = footerHTML;
+    document.querySelector(layout === "wide" ? ".footer.square-only" : ".footer.wide-only").remove();
+  }
+
+  // Deterministic pseudo-random so every render looks the same.
+  let seed = 7;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const spark = (base, n, fails = []) => {
+    const pts = [];
+    for (let i = 0; i < n; i++) pts.push(fails.includes(i) ? null : base * (0.8 + rnd() * 0.45));
+    return pts;
+  };
+  const sparkSVG = (values, w = 46, h = 18) => {
+    const max = Math.max(...values.filter(v => v !== null));
+    const step = w / (values.length - 1);
+    let path = "", ticks = "", started = false;
+    values.forEach((v, i) => {
+      const x = (i * step).toFixed(1);
+      if (v === null) { ticks += `<line x1="${x}" y1="0" x2="${x}" y2="${h}" stroke="#ff453a" stroke-width="1.5"/>`; started = false; return; }
+      const y = (h - 2 - (v / max) * (h - 4)).toFixed(1);
+      path += (started ? "L" : "M") + x + " " + y + " ";
+      started = true;
+    });
+    return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><path d="${path}" fill="none" stroke="#0a84ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>${ticks}</svg>`;
+  };
+  const rows = [
+    ["down", "Staging", "HTTP 502 Bad Gateway · 4 min", "—", "97.2%", spark(200, 16, [13, 14, 15])],
+    ["warn", "Shop API", "Slow: 2.1 s (usually 380 ms)", "2.1 s", "100%", spark(380, 15).concat([2100])],
+    ["up", "example.com", "https://example.com", "142 ms", "99.98%", spark(140, 16)],
+    ["up", "Database", "db.internal:5432", "12 ms", "100%", spark(12, 16)],
+    ["up", "Router", "192.168.1.1", "3 ms", "100%", spark(3, 16)],
+  ];
+  document.getElementById("rows").innerHTML = rows.map(([cls, n, s, ms, up, sp]) =>
+    `<div class="row ${cls}"><span class="d"></span><div class="t"><div class="n">${n}</div><div class="s">${s}</div></div>` +
+    `<div class="m">${ms}<small>${up}</small></div>${sparkSVG(sp)}</div>`).join("");
+
+  // Detail chart: 24 h latency with one outage band.
+  const W = 418, H = 120, N = 96, outage = [58, 61];
+  const vals = [];
+  for (let i = 0; i < N; i++) vals.push(i >= outage[0] && i <= outage[1] ? null : 140 + 40 * Math.sin(i / 8) + rnd() * 30);
+  const maxV = 260, sx = W / (N - 1), y = v => (H - 8 - (v / maxV) * (H - 16)).toFixed(1);
+  let line = "", area = "", seg = [];
+  const flush = () => {
+    if (seg.length < 2) { seg = []; return; }
+    line += "M" + seg.map(([x, v]) => `${x.toFixed(1)} ${y(v)}`).join(" L") + " ";
+    area += `M${seg[0][0].toFixed(1)} ${H - 8} L` + seg.map(([x, v]) => `${x.toFixed(1)} ${y(v)}`).join(" L") + ` L${seg[seg.length - 1][0].toFixed(1)} ${H - 8} Z `;
+    seg = [];
+  };
+  vals.forEach((v, i) => { if (v === null) flush(); else seg.push([i * sx, v]); });
+  flush();
+  const bandX = outage[0] * sx, bandW = (outage[1] - outage[0] + 1) * sx;
+  document.getElementById("chart").innerHTML = `
+    <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a84ff" stop-opacity=".25"/><stop offset="1" stop-color="#0a84ff" stop-opacity=".02"/></linearGradient></defs>
+    ${[0.25, 0.5, 0.75].map(f => `<line x1="0" x2="${W}" y1="${(H - 8) * f}" y2="${(H - 8) * f}" stroke="#d7d9e1" stroke-width="1"/>`).join("")}
+    <rect x="${bandX}" y="0" width="${bandW}" height="${H - 8}" fill="#ff453a" opacity=".16"/>
+    <path d="${area}" fill="url(#g)"/>
+    <path d="${line}" fill="none" stroke="#0a84ff" stroke-width="1.8" stroke-linejoin="round"/>
+    <line x1="0" x2="${W}" y1="${H - 8}" y2="${H - 8}" stroke="#c8cbd5" stroke-width="1"/>
+    ${[0, 1, 2, 3].map(i => `<circle cx="${(outage[0] + i) * sx}" cy="${H - 8}" r="2.4" fill="#ff453a"/>`).join("")}`;
+</script>
+</body>
+</html>

@@ -54,7 +54,21 @@ Checking too often can get you rate-limited or blocked, so NabızTut keeps traff
 - **Resize the panel:** menu bar icon › *Resize panel…*, drag the edges, then *Done*.
 - **Details:** click a row in the panel.
 
-## Build from source
+## Installation
+
+### Prebuilt release
+
+Download [`NabizTut.zip`](https://github.com/mrtozn1923/macos-apps/releases/download/nabiztut-v1.0.0/NabizTut.zip)
+from the [Releases](https://github.com/mrtozn1923/macos-apps/releases) page and move `NabizTut.app`
+into your `Applications` folder.
+
+The app is not notarized by Apple, so macOS blocks it on first launch:
+
+1. Try to open `NabizTut.app` once.
+2. Go to **System Settings › Privacy & Security** and click **Open Anyway**.
+3. Allow notifications when asked, so you are alerted when a site goes down.
+
+### Build from source
 
 ```bash
 git clone https://github.com/mrtozn1923/macos-apps.git

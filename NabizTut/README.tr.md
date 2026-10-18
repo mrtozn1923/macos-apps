@@ -51,7 +51,21 @@ geçmişlerini masaüstünde duran küçük bir panelde gösterir. Tamamen yerel
 - **Paneli boyutlandır:** Menü çubuğu ikonu › *Paneli boyutlandır…*, kenarlardan sürükle, sonra *Bitti*.
 - **Detay:** Paneldeki bir satıra tıkla.
 
-## Kaynaktan derleme
+## Kurulum
+
+### Hazır sürüm
+
+[Releases](https://github.com/mrtozn1923/macos-apps/releases) sayfasından
+[`NabizTut.zip`](https://github.com/mrtozn1923/macos-apps/releases/download/nabiztut-v1.0.0/NabizTut.zip)
+dosyasını indir, `NabizTut.app`'i `Uygulamalar` klasörüne taşı.
+
+Uygulama Apple tarafından notarize edilmediği için ilk açılışta macOS onu engeller:
+
+1. `NabizTut.app`'i bir kez açmayı dene.
+2. **Sistem Ayarları › Gizlilik ve Güvenlik** bölümünde **Yine de Aç**'a tıkla.
+3. Bildirim izni istendiğinde izin ver; böylece bir site düştüğünde haber alırsın.
+
+### Kaynaktan derleme
 
 ```bash
 git clone https://github.com/mrtozn1923/macos-apps.git

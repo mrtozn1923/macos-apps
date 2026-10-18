@@ -83,6 +83,8 @@ kbd {
 .app-logo svg { width: 55%; height: 55%; }
 
 .gradient-text { background: linear-gradient(90deg, #ff7a6b, var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.gradient-text.green { background-image: linear-gradient(90deg, #4ade80, #7cb8ff); }
+.app-logo.pulse { background: linear-gradient(145deg, #30d158, #0a9f6e 55%, #2b6cff); box-shadow: 0 10px 30px rgba(48, 209, 88, .28), inset 0 1px 0 rgba(255,255,255,.35); }
 
 .btn {
   display: inline-flex; align-items: center; gap: 10px;
@@ -92,6 +94,7 @@ kbd {
 }
 .btn:hover { transform: translateY(-1px); }
 .btn-primary { background: linear-gradient(135deg, #ff6a5c, #e0306a); color: #fff; box-shadow: 0 10px 24px rgba(224, 48, 106, .35); }
+.btn-primary.green { background: linear-gradient(135deg, #30d158, #0a9f6e); box-shadow: 0 10px 24px rgba(10, 159, 110, .35); }
 .btn-ghost { background: var(--surface); border-color: var(--surface-border); color: var(--text); }
 .btn small { font-weight: 500; opacity: .8; font-size: 13px; }
 
@@ -156,6 +159,9 @@ a.app-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.
 .tool-grid { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; }
 .tool-grid li { display: flex; align-items: center; gap: 10px; font-size: 15px; }
 .hint { margin-top: 12px; font-size: 13px; color: var(--muted); }
+.eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.key-list .value { color: var(--muted); text-align: right; font-size: 14px; }
+.key-list .value code { color: var(--text); }
 table.shortcuts { width: 100%; border-collapse: collapse; }
 table.shortcuts td { padding: 11px 4px; border-bottom: 1px solid var(--surface-border); vertical-align: middle; }
 table.shortcuts td:first-child { width: 38%; white-space: nowrap; }
