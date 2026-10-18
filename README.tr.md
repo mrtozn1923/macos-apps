@@ -10,6 +10,7 @@ Her uygulama kendi klasöründe, bağımsız olarak derlenir.
 | Uygulama | Açıklama |
 |---|---|
 | [TıkKare](TikKare/README.tr.md) | Lightshot benzeri ekran görüntüsü aracı: alan / pencere / tam ekran / kaydırarak yakalama, çizim araçları, OCR. Tamamen yerel. |
+| [NabızTut](NabizTut/README.tr.md) | Masaüstü uptime izleyici: web sitelerini, API'leri ve sunucuları (HTTP, ping, TCP) istediğin aralıkla kontrol eder; cevap süresi grafikleri ve düşüş bildirimleri sunar. Tamamen yerel. |
 
 ## Gereksinimler
 

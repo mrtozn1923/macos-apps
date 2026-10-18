@@ -10,6 +10,7 @@ Each app lives in its own folder and builds independently.
 | App | Description |
 |---|---|
 | [TıkKare](TikKare/) | Lightshot-style screenshot tool: area / window / full screen / scrolling capture, annotation tools, OCR. Fully local. |
+| [NabızTut](NabizTut/) | Desktop uptime monitor: checks websites, APIs and servers (HTTP, ping, TCP) on your schedule, with response-time charts and down alerts. Fully local. |
 
 ## Requirements
 
